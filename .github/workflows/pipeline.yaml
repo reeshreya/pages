@@ -23,29 +23,13 @@ jobs:
           name: artifact
           path: build/libs/pages.jar
 
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
+      - name: build-docker-image
+        uses: docker/build-push-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: shreyabhattacharya/pages:pipeline
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
-
- #     - name: build-docker-image
- #       uses: docker/build-push-action@v1
- #       with:
- #         username: ${{ secrets.DOCKER_USERNAME }}
- #         password: ${{ secrets.DOCKER_PASSWORD }}
- #         repository: ${{ secrets.DOCKER_USERNAME }}/pages
- #         tags: shreyabhattacharya/pages:pipeline
+          repository: ${{ secrets.DOCKER_USERNAME }}/pages
+          tags: pipeline
 
   deploy-to-cluster:
     needs: build-artifact
