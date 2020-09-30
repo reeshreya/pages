@@ -14,10 +14,10 @@ spec:
   template:
     metadata:
       labels:
-        app: pages
-    spec:
-      containers:
-        - image: shreyabhattacharya/pages:1.0
+            app: pages
+            spec:
+              containers:
+                - image: shreyabhattacharya/pages:pipeline
           imagePullPolicy: Always
           name: pages
           ports:
