@@ -15,9 +15,9 @@ spec:
     metadata:
       labels:
             app: pages
-            spec:
-              containers:
-                - image: shreyabhattacharya/pages:pipeline
+    spec:
+       containers:
+        - image: shreyabhattacharya/pages:pipeline
           imagePullPolicy: Always
           name: pages
           ports:
