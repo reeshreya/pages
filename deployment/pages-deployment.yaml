@@ -24,7 +24,7 @@ spec:
           hostPath:
             path: /gamma
       containers:
-        - image: shreyabhattacharya/pages:monitor
+        - image: shreyabhattacharya/pages:distributed
           name: pages
           ports:
             - containerPort: 8080
